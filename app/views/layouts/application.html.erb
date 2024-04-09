@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ColeBlog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-prefetch" content="false">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.red.min.css"%>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div>
+      <%= render 'shared/nav/header' %>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
