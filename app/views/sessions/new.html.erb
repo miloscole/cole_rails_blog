@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Sign in</h2>
+ <br>
+  <%= form_with url: signin_path do |f| %>
+    <div><%= f.label :email %></div>
+    <div><%= f.email_field :email, required: true, placeholder: 'example@example.com' %></div>
+    <div><%= f.label :password%></div>
+    <div><%= f.password_field :password, required: true, autocomplete: "new-password"  %></div>
+    <br>
+    <%= f.submit 'Sign in' %>
+  <% end %>
+</div>
