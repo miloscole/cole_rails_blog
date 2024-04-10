@@ -1,0 +1,7 @@
+.flash-msg {
+    padding: var(--pico-form-element-spacing-vertical) var(--pico-form-element-spacing-horizontal);
+    position: absolute;
+    right: var(--pico-form-element-spacing-vertical);
+    top: var(--pico-form-element-spacing-horizontal);
+    border-radius: var(--pico-border-radius);
+}

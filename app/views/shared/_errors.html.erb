@@ -1,0 +1,14 @@
+<% if obj.errors.any? %>
+  <div class="container">
+    <article class="pico-background-red-550">
+      <h4>
+        <%= pluralize(obj.errors.count, 'error') %> prohibited this <%= obj.class.to_s.downcase %> from being saved:
+      </h4>
+      <ul>
+        <% obj.errors.full_messages.each  do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </article>
+  </div>
+<% end %>

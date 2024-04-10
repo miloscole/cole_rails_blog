@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  include Flashable
+
   before_action :set_article, only: %i[show edit update destroy]
 
   def index
@@ -16,9 +18,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
+      success_msg with: @article.title
       redirect_to articles_path
     else
-      render "new"
+      render "new", status: 422
     end
   end
 
@@ -27,14 +30,16 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
+      success_msg with: @article.title
       redirect_to article_path
     else
-      render "edit"
+      render "edit", status: 422
     end
   end
 
   def destroy
     @article.destroy
+    success_msg with: @article.title
     redirect_to articles_path
   end
 
