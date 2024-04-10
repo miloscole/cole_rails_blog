@@ -11,7 +11,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .content {
@@ -27,13 +26,14 @@
     a {
         font-size: 1.2rem;
         text-decoration: none;
-        color: var(--pico-color-red-800);
+        color: var(--pico-secondary);
         padding: .6rem .9rem;
-        border: 2px solid var(--pico-color-red-650);
-        border-radius: .6rem;
+        border: 2px solid var(--pico-secondary);
+        border-radius: .3rem;
     }
 
     a:hover {
         color: var(--pico-color-amber-150);
+        border: 2px solid var(--pico-color-amber-150);
     }
 }
