@@ -1,1 +1,4 @@
-<%= render 'articles', articles: @articles %>
+<div class="container">
+  <%= render 'articles', articles: @articles %>
+  <%= will_paginate @articles %>
+</div>
