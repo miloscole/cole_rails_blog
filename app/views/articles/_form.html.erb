@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for article do |f| %>
+    <div><%= f.label :title %></div>
+    <div><%= f.text_field :title %></div>
+    <div><%= f.label :text%></div>
+    <div><%= f.text_area :text, rows: 6 %></div><br>
+    <%= f.submit %>
+  <% end %>
+</div>
