@@ -1,0 +1,23 @@
+<div class="container">
+  <% @users.each do |user| %>
+    <article>
+      <header>
+        <h4 class='margin-unset'>
+          <%= link_to "#{user.username}", user_path(user) %>
+        </h4>
+      </header>
+      <div>
+        <%= user.email %>
+      </div>
+      <footer class='flex-between'>
+        <span>
+          <%= link_to "Edit", edit_user_path(user) %> |
+          <%= link_to "Delete", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </span>
+        <small>
+          <%= pluralize(user.articles.size, 'article') %>
+        </small>
+      </footer>
+    </article>
+  <% end %>
+</div>
