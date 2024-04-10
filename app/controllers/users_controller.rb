@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include Flashable
 
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :require_same_user, only: %i[edit update]
 
   def index
     @users = User.paginate(page: params[:page], per_page: 6).order(created_at: "desc")
@@ -50,5 +51,12 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    unless current_user == @user
+      error_msg "Your can only edit your own account"
+      redirect_to root_path
+    end
   end
 end

@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   include Flashable
 
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :require_user, except: %i[index show]
+  before_action :require_article_creator, only: %i[edit update destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 6).order(created_at: "desc")
@@ -51,5 +53,12 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def require_article_creator
+    unless current_user == @article.user
+      error_msg "You can delete or edit only your own article"
+      redirect_to root_path
+    end
   end
 end

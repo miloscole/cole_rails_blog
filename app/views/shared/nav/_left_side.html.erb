@@ -13,14 +13,16 @@
   <li>
     <%= link_to "Categories", '#' %>
   </li>
-  <li>
-    <details class="dropdown">
-      <summary>
-        Actions
-      </summary>
-      <ul>
-        <li><%= link_to "Add new article", new_article_path %></li>
-      </ul>
-    </details>
-  </li>
+  <% if current_user %>
+    <li>
+      <details class="dropdown">
+        <summary>
+          Actions
+        </summary>
+        <ul>
+          <li><%= link_to "Add new article", new_article_path %></li>
+        </ul>
+      </details>
+    </li>
+  <% end %>
 </ul>

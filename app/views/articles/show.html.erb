@@ -7,8 +7,10 @@
     </header>
     <p><%= simple_format(@article.text) %></p>
     <footer>
-      <%= link_to "Edit", edit_article_path(@article)%> |
-      <%= link_to "Delete", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
+      <% if current_user && current_user == @article.user %>
+        <%= link_to "Edit", edit_article_path(@article)%> |
+        <%= link_to "Delete", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
+      <% end %>
       <%= link_to "View all articles", articles_path%>
     </footer>
   </article>
