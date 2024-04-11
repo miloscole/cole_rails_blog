@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   root "welcome#home"
 
   resources :articles
@@ -10,4 +9,6 @@ Rails.application.routes.draw do
   get "signin", to: "sessions#new"
   post "signin", to: "sessions#create"
   delete "signin", to: "sessions#destroy"
+
+  resources :categories
 end

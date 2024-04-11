@@ -4,7 +4,11 @@
     <div><%= f.label :title %></div>
     <div><%= f.text_field :title %></div>
     <div><%= f.label :text%></div>
-    <div><%= f.text_area :text, rows: 6 %></div><br>
+    <div><%= f.text_area :text, rows: 6 %></div>
+    <br>
+    <div><%= f.label :category_ids, 'Select categories associated with your article'%></div>
+    <div><%= f.collection_select :category_ids, Category.all, :id, :name, {}, {multiple: '', size: Category.all.size}%></div>
+    <br>
     <%= f.submit %>
   <% end %>
 </div>

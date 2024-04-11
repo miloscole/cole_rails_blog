@@ -1,0 +1,8 @@
+<%= render 'shared/errors', obj: category %>
+<div class="container">
+  <%= form_for category do |f| %>
+    <div><%= f.label :name %></div>
+    <div><%= f.text_field :name, required: true %></div><br>
+    <%= f.submit %>
+  <% end %>
+</div>

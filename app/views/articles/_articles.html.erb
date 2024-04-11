@@ -4,10 +4,15 @@
       <h4 class='margin-unset'>
         <%= link_to "#{article.title}", article_path(article) %>
       </h4>
+      <span>
+        <% article.categories.each do |category| %>
+          <mark><%= category.name %></mark>
+        <% end %>
+      </span>
     </header>
     <%= truncate(article.text, length: 200) %>
     <footer class='flex-between'>
-      <% if current_user && (current_user == article.user || current_user.admin?) %>
+      <% if actions_allowed_on_article? %>
         <span>
           <%= link_to "Edit", edit_article_path(article) %> |
           <%= link_to "Delete", article_path(article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>

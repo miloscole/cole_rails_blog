@@ -3,8 +3,22 @@
  *= require_self
 */
 
+html {
+    scrollbar-width: none;
+}
+
 a {
     text-decoration: none
+}
+
+small {
+    font-size: 0.65em;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: var(--pico-color-slate-900);
 }
 
 .flex-between {

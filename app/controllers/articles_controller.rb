@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.user = current_user
     if @article.save
       success_msg with: @article.title
       redirect_to articles_path
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       success_msg with: @article.title
-      redirect_to article_path
+      redirect_to article_path(@article)
     else
       render "edit", status: 422
     end
@@ -48,15 +48,15 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, category_ids: [])
   end
 
   def set_article
     @article = Article.find(params[:id])
   end
 
-  def require_article_creator
-    unless current_user == @article.user || current_user.admin?
+  def require_article_creator_or_admin
+    unless actions_allowed_on_article?
       error_msg "You can delete or edit only your own article"
       redirect_to root_path
     end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      success_msg custom: "Welcome to your account"
+      success_msg custom: "Welcome to your account!"
       redirect_to user_path(user)
     else
       error_msg
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    success_msg custom: "You have logged out successfully"
+    success_msg custom: "You have logged out successfully!"
     redirect_to root_path
   end
 end

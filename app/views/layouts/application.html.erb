@@ -12,14 +12,21 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div>
+    <% if current_page?(root_path) %>
       <%= render 'shared/nav/header' %>
-    </div>
+    <% else %>
+      <div class="navbar">
+        <%= render 'shared/nav/header' %>
+      </div>
+    <% end %>
+    <br>
+    <br>
     <br>
     <br>
     <%= render 'shared/flash' %>
     <div>
       <%= yield %>
     </div>
+    <br>
   </body>
 </html>

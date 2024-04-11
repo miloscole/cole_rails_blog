@@ -2,8 +2,8 @@
   <% if current_user %>
     <li>
       <details class="dropdown">
-        <summary>
-          Account
+        <summary role="button" class="outline">
+          Account <%= '(admin)' if current_user&.admin? %>
         </summary>
         <ul dir="rtl">
           <li class="pico-color-grey-500">
