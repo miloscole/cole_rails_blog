@@ -59,6 +59,8 @@ group :development do
   # Simple live loader. The page is reloaded fully with window.location.reload().
   gem "rails_live_reload"
 
+  # Faker is used to easily generate fake data: names, addresses, phone numbers, etc.
+  gem "faker"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
