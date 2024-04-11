@@ -10,9 +10,7 @@
         <%= user.email %>
       </div>
       <footer class='flex-between'>
-        <span>
-          <%= link_to "Delete", user_path(user), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        </span>
+        <%= delete_link_visibility_per_user(user) %>
         <small>
           <%= pluralize(user.articles.size, 'article') %>
         </small>

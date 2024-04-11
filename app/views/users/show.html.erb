@@ -3,5 +3,6 @@
   <div align='center'><%= @user.email %></div><br><br>
   <h4>All <%= @user.username %>'s articles</h4>
   <hr><br>
-  <%= render 'articles/articles', articles: @user.articles %>
+  <%= render 'articles/articles', articles: @user_articles %>
+  <%= will_paginate @user_articles %>
 </div>

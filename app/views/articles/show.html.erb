@@ -1,13 +1,21 @@
 <div class="container">
   <article>
     <header>
+      <strong>
+        Created by: <%= @article.user.username %>
+      </strong>
+    </header>
+    <%= @article.user.email %>
+  </article>
+  <article>
+    <header>
       <br>
       <h3 class="margin-unset"><%= @article.title %></h3>
       <br>
     </header>
     <p><%= simple_format(@article.text) %></p>
     <footer>
-      <% if current_user && current_user == @article.user %>
+      <% if current_user && (current_user == @article.user || current_user.admin?) %>
         <%= link_to "Edit", edit_article_path(@article)%> |
         <%= link_to "Delete", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> |
       <% end %>

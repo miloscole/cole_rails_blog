@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   before_action :set_article, only: %i[show edit update destroy]
   before_action :require_user, except: %i[index show]
-  before_action :require_article_creator, only: %i[edit update destroy]
+  before_action :require_article_creator_or_admin, only: %i[edit update destroy]
 
   def index
     @articles = Article.paginate(page: params[:page], per_page: 6).order(created_at: "desc")
@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_article_creator
-    unless current_user == @article.user
+    unless current_user == @article.user || current_user.admin?
       error_msg "You can delete or edit only your own article"
       redirect_to root_path
     end
