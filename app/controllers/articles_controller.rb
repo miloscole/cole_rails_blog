@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   before_action :require_article_creator_or_admin, only: %i[edit update destroy]
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 6).order(created_at: "desc")
+    @articles = Article
+      .paginate(page: params[:page], per_page: 6)
+      .order(created_at: "desc")
+      .includes(:user)
+      .includes(:categories)
   end
 
   def show

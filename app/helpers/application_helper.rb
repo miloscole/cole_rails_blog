@@ -10,4 +10,8 @@ module ApplicationHelper
       nil
     end
   end
+
+  def controller_name_title
+    controller_name.capitalize
+  end
 end

@@ -3,11 +3,16 @@ class CategoriesController < ApplicationController
   before_action :require_admin, except: %i[index show]
 
   def index
-    @categories = Category.paginate(page: params[:page], per_page: 6)
+    @categories = Category
+      .paginate(page: params[:page], per_page: 6)
+      .includes(:articles)
   end
 
   def show
-    @category_articles = @category.articles.paginate(page: params[:page], per_page: 4)
+    @category_articles = @category.articles
+      .paginate(page: params[:page], per_page: 4)
+      .includes(:categories)
+      .includes(:user)
   end
 
   def new

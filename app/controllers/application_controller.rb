@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   helper_method :actions_allowed_on_article?
 
   rescue_from ActiveRecord::RecordNotFound do |err|
-    redirect_to action: :index
     error_msg err
+    redirect_to action: :index
   end
 
   def handle_404
