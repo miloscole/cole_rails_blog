@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   delete "signin", to: "sessions#destroy"
 
   resources :categories
+
+  match "*path", to: "application#handle_404", via: :all
 end

@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  include Flashable
-
   def new
   end
 

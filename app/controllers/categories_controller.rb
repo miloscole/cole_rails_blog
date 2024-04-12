@@ -1,6 +1,4 @@
 class CategoriesController < ApplicationController
-  include Flashable
-
   before_action :set_category, only: %i[show edit update destroy]
   before_action :require_admin, except: %i[index show]
 
